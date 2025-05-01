@@ -9,8 +9,18 @@ export default defineConfig([
     extends: ["js/recommended"],
   },
   {
+    files: ["vite.config.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     files: ["**/*.{js,mjs,cjs}"],
-    languageOptions: { globals: globals.browser },
+    languageOptions: {
+      globals: globals.browser,
+    },
   },
   {
     rules: {
