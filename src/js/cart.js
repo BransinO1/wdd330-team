@@ -28,7 +28,28 @@ function cartItemTemplate(item) {
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
+  document.querySelector(".cart-total").innerHTML = computeTotal()
   return newItem;
+}
+
+function computeTotal() {
+  // Get cart items from local storage
+  const cartItems = getLocalStorage("so-cart") || [];
+  
+  // If cart is empty, return $0.00
+  if (cartItems.length === 0) {
+    return "$0.00";
+  }
+  
+  // Calculate total by adding up all item prices
+  const total = cartItems.reduce((sum, item) => {
+    // Get the price from the FinalPrice property
+    const price = parseFloat(item.FinalPrice);
+    return sum + price;
+  }, 0);
+  
+  // Format the total to 2 decimal places and add $ sign
+  return `$${total.toFixed(2)}`;
 }
 
 renderCartContents();
