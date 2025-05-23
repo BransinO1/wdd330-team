@@ -1,7 +1,12 @@
-import productList from './productList.mjs';
+import productList from "./productList.mjs";
+import { updateCartIcon } from "./superscript.js";
+import { loadHeaderFooter } from "./utils.mjs";
 
-// Call productList with the correct parameters
-document.addEventListener('DOMContentLoaded', () => {
-    // For example, render products of category 'tents' in the element with class 'product-list'
-    productList('.product-list', 'tents');
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load header/footer first
+  await loadHeaderFooter();
+
+  // Then render product list and update cart icon
+  productList(".product-list", "tents");
+  updateCartIcon();
 });
