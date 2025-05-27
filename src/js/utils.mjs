@@ -49,3 +49,31 @@ export function renderListWithTemplate(
   const htmlString = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
+
+//W05 Dynamic Header/Footer
+// Function to load an HTML template from the given path
+export function loadTemplate(path) {
+    return async function () {
+        const res = await fetch(path);
+        if (res.ok) {
+            const html = await res.text();
+            return html;
+        }
+    };
+}
+
+// Export the functions used in the project
+export const headerTemplateFn = loadTemplate("/partials/header.html");
+export const footerTemplateFn = loadTemplate("/partials/footer.html");
+
+// Function to load and insert the header and footer into the page
+export async function loadHeaderFooter() {
+    const headerEl = document.getElementById("main-header");
+    const footerEl = document.getElementById("main-footer");
+
+    const headerHTML = await headerTemplateFn();
+    const footerHTML = await footerTemplateFn();
+
+    headerEl.innerHTML = headerHTML;
+    footerEl.innerHTML = footerHTML;
+}

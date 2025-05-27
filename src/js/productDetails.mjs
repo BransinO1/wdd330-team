@@ -1,5 +1,7 @@
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { updateCartIcon } from './superscript.js';
+
 
 let product = {};
 
@@ -13,9 +15,17 @@ export default async function productDetails(productId) {
 
 function addProductToCart(productToAdd) {
   const cart = getLocalStorage("so-cart") || [];
-  cart.push(productToAdd);
+  const existingProductIndex = cart.findIndex(item => item.Id === productToAdd.Id);
+  if (existingProductIndex > -1) {
+    cart[existingProductIndex].Quantity += 1;
+  } else {
+    productToAdd.Quantity = 1;
+    cart.push(productToAdd);
+  }
   setLocalStorage("so-cart", cart);
+  updateCartIcon();
 }
+
 
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
