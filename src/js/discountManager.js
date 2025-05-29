@@ -1,16 +1,16 @@
 // Store discounts in memory
 const discounts = {
-  '985PR': {
+  "985PR": {
     percentage: 15,
-    label: 'Spring Sale'
+    label: "Spring Sale"
   },
-  '344YJ': {
+  "344YJ": {
     percentage: 10,
-    label: 'Spring Sale'
+    label: "Spring Sale"
   },
-  '880RR': {
+  "880RR": {
     percentage: 10,
-    label: 'Flash Sale'
+    label: "Flash Sale"
   }
 };
 
@@ -42,7 +42,7 @@ function calculateDiscount(originalPrice, productId) {
 
 // Display discount on the page
 function displayDiscount(originalPrice, productId) {
-  const priceElement = document.querySelector('.product-card__price');
+  const priceElement = document.querySelector(".product-card__price");
   if (!priceElement) return;
   
   const result = calculateDiscount(originalPrice, productId);
