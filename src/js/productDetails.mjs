@@ -1,12 +1,13 @@
-import { findProductById } from "./productData.mjs";
+import externalServices from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 import { updateCartIcon } from './superscript.js';
+import { renderResponsiveImage } from "./utils.mjs";
 
 
 let product = {};
 
 export default async function productDetails(productId) {
-  const product = await findProductById(productId);
+  const product = await externalServices.findProductById(productId);
   if (!product) {
     showProductNotFoundMessage();
     return;
@@ -51,8 +52,10 @@ const baseURL = import.meta.env.VITE_SERVER_URL;
 function renderProductDetails(product) {
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-  document.querySelector("#productImage").src = product.Images?.PrimaryLarge || "images/placeholder.jpg";
-  document.querySelector("#productImage").alt = product.Name;
+
+  // Responsive image replaces manual image setup
+  document.querySelector("#productImageContainer").innerHTML = renderResponsiveImage(product.Images, product.Name);
+
   document.querySelector("#productFinalPrice").innerText = `$${product.FinalPrice.toFixed(2)}`;
   document.querySelector("#productColorName").innerText = product.Colors?.[0]?.ColorName || "N/A";
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
