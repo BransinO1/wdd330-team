@@ -12,10 +12,60 @@
     <header class="divider" id="main-header">
     <!-- Header content will be dynamically loaded here -->
     </header>
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
+<main class="divider">
+  <h2>Review & Place your Order</h2>
+  <form id="checkoutForm" class="checkout-form">
+    <fieldset>
+      <legend>Shipping</legend>
+      <label>
+        First Name:
+        <input type="text" name="fname" required />
+      </label>
+      <label>
+        Last Name:
+        <input type="text" name="lname" required />
+      </label>
+      <label>
+        Street:
+        <input type="text" name="address" required />
+      </label>
+      <label>
+        City:
+        <input type="text" name="city" required />
+      </label>
+      <label>
+        State:
+        <input type="text" name="state" required />
+      </label>
+      <label>
+        Zip:
+        <input type="text" name="zip" required />
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Payment</legend>
+      <label>
+        Card number:
+        <input type="text" name="ccnum" required />
+      </label>
+      <label>
+        Expiration:
+        <input type="text" name="exp" required />
+      </label>
+      <label>
+        Security Code:
+        <input type="text" name="code" required />
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Order Summary</legend>
+      <p>Item Subtotal (<span id="item-count">0</span>): <span id="subtotal">$0.00</span></p>
+      <p>Shipping Estimate: <span id="shipping">$0.00</span></p>
+      <p>Tax: <span id="tax">$0.00</span></p>
+      <p><strong>Order Total: <span id="order-total">$0.00</span></strong></p>
+      <button type="submit" class="checkout-button">Checkout</button>
+    </form>
     </main>
     <!-- Empty footer for dynamic content -->
     <footer id="main-footer">

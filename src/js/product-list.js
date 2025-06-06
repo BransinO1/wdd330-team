@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const titleElement = document.querySelector(".category-title");
   if (titleElement) {
-    titleElement.textContent = `Top ${category.replace("-", "")} Products`;
+    const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+    titleElement.textContent = `Top Products: ${capitalizedCategory}`;
   }
 
   productList(".product-list", category);

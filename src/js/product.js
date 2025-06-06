@@ -12,7 +12,7 @@ async function productDiscount(productId) {
 }
 
 function applyDiscount() {
-  const priceElement = document.querySelector("#productFinalPrice"); // 👈 or update if needed
+  const priceElement = document.querySelector("#productFinalPrice");
   if (!priceElement) return;
 
   const priceText = priceElement.textContent;
@@ -22,11 +22,9 @@ function applyDiscount() {
   displayDiscount(originalPrice, productId);
 }
 
-async function init() {
+// Delay init until DOM is ready
+document.addEventListener("DOMContentLoaded", async () => {
   await loadHeaderFooter();
   updateCartIcon();
   await productDiscount(productId);
-}
-
-init();
-
+});

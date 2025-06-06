@@ -7,9 +7,9 @@ export function updateCartIcon() {
   if (cartItemCount) {
     if (totalQuantity > 0) {
       cartItemCount.textContent = totalQuantity;
-      cartItemCount.style.display = "inline";  // Show the number of items
+      cartItemCount.style.display = "inline";
     } else {
-      cartItemCount.style.display = "none";   // Hide if the cart is empty
+      cartItemCount.style.display = "none";
     }
   }
 }
@@ -22,6 +22,6 @@ export function computeTotalQuantity(cartItems) {
 
   return cartItems.reduce((sum, item) => {
     const quantity = item.Quantity || 1;
-    return sum + quantity;  // Sum up the quantities of all items
+    return sum + quantity;
   }, 0);
 }

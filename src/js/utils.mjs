@@ -77,3 +77,17 @@ export async function loadHeaderFooter() {
     headerEl.innerHTML = headerHTML;
     footerEl.innerHTML = footerHTML;
 }
+
+export function renderResponsiveImage(imageObj, altText = "", imgId = "productImage") {
+  return `
+    <picture>
+      <source media="(min-width: 1024px)" srcset="${imageObj.PrimaryLarge}">
+      <source media="(min-width: 600px)" srcset="${imageObj.PrimaryMedium}">
+      <img
+        id="${imgId}"
+        src="${imageObj.PrimarySmall}"
+        alt="${altText}"
+      />
+    </picture>
+  `;
+}

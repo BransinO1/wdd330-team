@@ -1,5 +1,7 @@
 import { getLocalStorage, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 import { updateCartIcon } from './superscript.js';
+import cartItemTemplate from "./cartItemTemplate.mjs";
+
 
 // Default export for the shopping cart
 export default function shoppingCart() {
@@ -14,13 +16,13 @@ function renderCartContents() {
   // If there are no items in the cart, display a message
   if (cartItems.length === 0) {
     outputEl.innerHTML = "<p>Your cart is empty.</p>";
-    document.querySelector(".cart-total").innerHTML = "$0.00"; // Ensure the total is $0 when empty
+    document.querySelector(".cart-total").innerHTML = "$0.00";
     return;
   }
 
   // Group items by product and render the cart
   const groupedCartItems = groupItemsByProduct(cartItems);
-  renderListWithTemplate(cartItemTemplate, outputEl, groupedCartItems);  // This function is now properly imported
+  renderListWithTemplate(cartItemTemplate, outputEl, groupedCartItems);
 
   // Update the total
   document.querySelector(".cart-total").innerHTML = computeTotal(cartItems);
@@ -46,25 +48,6 @@ function groupItemsByProduct(cartItems) {
   return Object.values(groupedItems); // Convert to an array
 }
 
-// Template for each grouped cart item
-function cartItemTemplate(item) {
-  const itemQuantity = item.Quantity || 1;
-  return `
-    <li class="cart-card divider">
-      <a href="#" class="cart-card__image">
-        <img src="${item.Image || item.Images?.PrimarySmall || 'images/placeholder.jpg'}" alt="${item.Name}" />
-      </a>
-      <a href="#">
-        <h2 class="card__name">${item.Name}</h2>
-      </a>
-      <p class="cart-card__color">${item.Colors[0]?.ColorName || "No color"}</p>
-      <p class="cart-card__quantity">Qty: ${itemQuantity}</p>
-      <p class="cart-card__price">$${(item.FinalPrice * itemQuantity).toFixed(2)}</p>
-      <button class="remove-item" data-id="${item.Id}">Remove</button> <!-- Add Remove button -->
-    </li>
-  `;
-}
-
 // Function to calculate the total price
 function computeTotal(cartItems) {
   if (cartItems.length === 0) return "$0.00";
@@ -85,9 +68,9 @@ function removeItemFromCart(productId) {
   const itemIndex = cartItems.findIndex(item => item.Id === productId);
   if (itemIndex > -1) {
     if (cartItems[itemIndex].Quantity > 1) {
-      cartItems[itemIndex].Quantity -= 1;  // Decrease quantity if greater than 1
+      cartItems[itemIndex].Quantity -= 1;
     } else {
-      cartItems.splice(itemIndex, 1);  // Remove the item completely
+      cartItems.splice(itemIndex, 1);
     }
     
     // Save the updated cart to localStorage
@@ -103,8 +86,8 @@ function attachRemoveItemListeners() {
   removeButtons.forEach(button => {
     button.addEventListener("click", (event) => {
       const productId = event.target.dataset.id;
-      console.log("Remove button clicked for product ID:", productId);  // Log productId
-      removeItemFromCart(productId); // Remove the item from the cart
+      console.log("Remove button clicked for product ID:", productId);
+      removeItemFromCart(productId);
     });
   });
 }
