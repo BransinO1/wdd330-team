@@ -28,12 +28,28 @@ function productCardTemplate(product) {
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
       <p class="product-card__price">${priceHtml}</p>
     </a>
+    <button class="quick-view-btn" data-product-id="${product.Id}">Quick View</button>
   </li>`;
 }
 
-export default async function productList(selector, category) {
+export default async function productList(selector, category, sortBy = "name-asc") {
   const el = document.querySelector(selector);
-  const products = await externalServices.getProductsByCategory (category);
+  const products = await externalServices.getProductsByCategory(category);
+
+  switch (sortBy) {
+    case "name-asc":
+      products.sort((a, b) => (a.NameWithoutBrand || "").localeCompare(b.NameWithoutBrand || ""));
+      break;
+    case "name-desc":
+      products.sort((a, b) => (b.NameWithoutBrand || "").localeCompare(a.NameWithoutBrand || ""));
+      break;
+    case "price-asc":
+      products.sort((a, b) => (a.FinalPrice || 0) - (b.FinalPrice || 0));
+      break;
+    case "price-desc":
+      products.sort((a, b) => (b.FinalPrice || 0) - (a.FinalPrice || 0));
+      break;
+  }
 
   renderListWithTemplate(productCardTemplate, el, products);
 }

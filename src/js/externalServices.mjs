@@ -36,9 +36,20 @@ async function checkout(payload) {
   return convertToJson(response);
 }
 
+async function searchProducts(query) {
+  const response = await fetch(`${baseURL}/products/search?q=${encodeURIComponent(query)}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch search results");
+  }
+  const data = await response.json();
+  // Adjust based on your API response shape:
+  return data.Result || []; // or data.products if your API returns that
+}
+
 // Export all as one object
 export default {
   getProductsByCategory,
   findProductById,
-  checkout
+  checkout,
+  searchProducts
 };

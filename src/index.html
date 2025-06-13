@@ -12,6 +12,14 @@
     <header class="divider" id="main-header">
     <!-- Header content will be dynamically loaded here -->
     </header>
+    <div id="welcome-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <h2>Welcome!</h2>
+      <p>Register now for a chance to win a $100 gift card!</p>
+      <a href="/register.html" class="register-button">Register Now</a>
+    </div>
+  </div>
     <main class="divider">
   <section class="category-grid">
     <a href="/product-list/index.html?category=tents">
@@ -31,6 +39,14 @@
       <p>Hammocks</p>
     </a>
   </section>
+  <section id="newsletter-signup" class="newsletter-signup">
+  <h2>Subscribe to Our Newsletter</h2>
+  <form id="newsletterForm">
+    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Subscribe</button>
+  </form>
+  <p id="newsletterMessage" class="message"></p>
+</section>
 </main>
     <!-- Empty footer for dynamic content -->
     <footer id="main-footer">
