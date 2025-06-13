@@ -2,6 +2,7 @@ import externalServices from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 import { updateCartIcon } from './superscript.js';
 import { renderResponsiveImage } from "./utils.mjs";
+import { alertMessage } from "./utils.mjs";
 
 
 let product = {};
@@ -46,7 +47,10 @@ function addProductToCart(productToAdd) {
   }
   setLocalStorage("so-cart", cart);
   updateCartIcon();
+
+  alertMessage("Item added to cart!", false);
 }
+
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
 function renderProductDetails(product) {

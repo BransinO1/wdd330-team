@@ -2,7 +2,7 @@
   --font-body: Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   /* colors */
-  --primary-color: #f0a868;
+  --primary-color: orange;
   --secondary-color: #525b0f;
   --tertiary-color: #a4b8c4;
   --light-grey: #d0d0d0;
@@ -415,3 +415,12 @@ footer {
   color: #2a9d8f;
   font-size: 1.1rem;
 }
+
+.alert-box {
+  background-color: orange;
+  color: white;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 5px;
+}
+

@@ -41,28 +41,38 @@ let checkoutProcess = {
     }));
   },
 
-  async checkout(form) {
-    const formData = new FormData(form);
-    const order = {
-      orderDate: new Date().toISOString(),
-      fname: formData.get("fname"),
-      lname: formData.get("lname"),
-      street: formData.get("address"),
-      city: formData.get("city"),
-      state: formData.get("state"),
-      zip: formData.get("zip"),
-      cardNumber: formData.get("ccnum"),
-      expiration: formData.get("exp"),
-      code: formData.get("code"),
-      items: this.packageItems(),
-      orderTotal: this.orderTotal.toFixed(2),
-      shipping: this.shipping,
-      tax: this.tax.toFixed(2)
-    };
+async checkout(form) {
+  const formData = new FormData(form);
+  const order = {
+    orderDate: new Date().toISOString(),
+    fname: formData.get("fname"),
+    lname: formData.get("lname"),
+    street: formData.get("address"),
+    city: formData.get("city"),
+    state: formData.get("state"),
+    zip: formData.get("zip"),
+    cardNumber: formData.get("ccnum"),
+    expiration: formData.get("exp"),
+    code: formData.get("code"),
+    items: this.packageItems(),
+    orderTotal: this.orderTotal.toFixed(2),
+    shipping: this.shipping,
+    tax: this.tax.toFixed(2)
+  };
 
+  try {
     const response = await externalServices.checkout(order);
-    return response;
+    // Clear the cart
+    localStorage.removeItem("so-cart");
+    // Redirect to success page
+    window.location.href = "/checkout/success.html";
+  } catch (err) {
+    console.error("Checkout failed:", err);
+    import("./utils.mjs").then(utils => {
+      utils.alertMessage(err.message?.message || "There was a problem with your order. Please check your input.", true);
+    });
   }
+}
 };
 
 export default checkoutProcess;
