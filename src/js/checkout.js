@@ -38,7 +38,7 @@ function validateForm(form) {
   const lname = form.lname.value.trim();
   const address = form.address.value.trim();
   const zip = form.zip.value.trim();
-  const ccnum = form.ccnum.value.replace(/\s+/g, ''); // Remove spaces
+  const ccnum = form.ccnum.value.replace(/\s+/g, ""); // Remove spaces
   const exp = form.exp.value.trim();
   const sec = form.code.value.trim(); // assuming security code field named 'code'
 
@@ -93,7 +93,7 @@ function validateExpiration(exp) {
   const regex = /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/;
   if (!regex.test(exp)) return false;
 
-  const parts = exp.split('/');
+  const parts = exp.split("/");
   let month = parseInt(parts[0], 10);
   let year = parts[1].length === 2 ? 2000 + parseInt(parts[1], 10) : parseInt(parts[1], 10);
 

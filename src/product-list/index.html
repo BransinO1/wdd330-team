@@ -14,9 +14,23 @@
     </header>
     <main class="divider">
     <h2 class="category-title"></h2>
+        <label for="sort-select">Sort by:</label>
+          <select id="sort-select">
+            <option value="name-asc">Name (A–Z)</option>
+            <option value="name-desc">Name (Z–A)</option>
+            <option value="price-asc">Price (Low to High)</option>
+            <option value="price-desc">Price (High to Low)</option>
+          </select>
+
     <ul class="product-list">
         <!-- Product cards will be rendered here -->
     </ul>
+    <div id="quick-view-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn" id="close-quickview">&times;</span>
+        <div id="modal-product-details"></div>
+      </div>
+    </div>
     </main>
     <!-- Empty footer for dynamic content -->
     <footer id="main-footer">
