@@ -20,22 +20,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+document.getElementById("newsletterForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  const emailInput = document.getElementById('email');
-  const message = document.getElementById('newsletterMessage');
+  const emailInput = document.getElementById("email");
+  const message = document.getElementById("newsletterMessage");
 
-  if (emailInput.value.trim() === '') {
-    message.style.color = 'red';
-    message.textContent = 'Please enter a valid email address.';
+  if (emailInput.value.trim() === "") {
+    message.style.color = "red";
+    message.textContent = "Please enter a valid email address.";
     return;
   }
 
   // Simulate a successful subscription
- message.style.color = '';
+ message.style.color = "";
 message.textContent = `Thanks for subscribing, ${emailInput.value}!`;
 
   // Clear the input
-  emailInput.value = '';
+  emailInput.value = "";
 });
