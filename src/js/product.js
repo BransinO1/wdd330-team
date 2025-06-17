@@ -3,6 +3,7 @@ import productDetails from "./productDetails.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import { updateCartIcon } from "./superscript.js";
 import { displayDiscount } from "./discountManager.js";
+import { initProductDetailPage } from "./breadcrumb.js";
 
 const productId = getParam("product");
 
@@ -28,3 +29,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateCartIcon();
   await productDiscount(productId);
 });
+
+initProductDetailPage(category, productName)

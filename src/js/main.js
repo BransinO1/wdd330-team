@@ -1,6 +1,7 @@
 import { updateCartIcon } from "./superscript.js";
 import { loadHeaderFooter } from "./utils.mjs";
 import loadAlerts from "./alert.mjs";
+import { initHomePage } from "./breadcrumb.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadHeaderFooter();
@@ -39,3 +40,5 @@ message.textContent = `Thanks for subscribing, ${emailInput.value}!`;
   // Clear the input
   emailInput.value = "";
 });
+
+initHomePage()

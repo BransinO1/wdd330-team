@@ -592,4 +592,44 @@ footer {
   font-weight: bold;
 }
 
+.breadcrumb {
+    background-color: #f8f9fa;
+    padding: 12px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 14px;
+}
 
+.breadcrumb-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item {
+    color: #6c757d;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item:hover {
+    color: #495057;
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    margin: 0 8px;
+    color: #6c757d;
+}
+
+.breadcrumb-current {
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Hide breadcrumb by default */
+.breadcrumb.hidden {
+    display: none;
+}
