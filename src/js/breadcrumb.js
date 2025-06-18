@@ -46,7 +46,6 @@ function initProductDetailPage(category, productName = '') {
     showBreadcrumb(breadcrumbContent);
 }
 
-// Export functions if using modules
 export { 
     hideBreadcrumb, 
     showBreadcrumb, 

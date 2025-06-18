@@ -4,19 +4,20 @@ import { updateCartIcon } from './superscript.js';
 import { renderResponsiveImage } from "./utils.mjs";
 import { alertMessage } from "./utils.mjs";
 
-
 let product = {};
 
 export default async function productDetails(productId) {
   const product = await externalServices.findProductById(productId);
   if (!product) {
     showProductNotFoundMessage();
-    return;
+    return null; // Return null when product not found
   }
   renderProductDetails(product);
   document
     .getElementById("addProductToCart")
     .addEventListener("click", () => addProductToCart(product));
+  
+  return product; // Return the product data for use in other modules
 }
 
 function showProductNotFoundMessage() {
