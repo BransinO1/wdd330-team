@@ -2,10 +2,12 @@ import { loadHeaderFooter, getParam } from "../js/utils.mjs";
 import { renderListWithTemplate } from "../js/utils.mjs";
 import productListTemplate from "../js/productList.mjs";
 import externalServices from "../js/externalServices.mjs";
+import { initLoginButton } from "../js/loginButton.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadHeaderFooter();
+  initLoginButton();
 
   const query = getParam("q");
   if (!query) {

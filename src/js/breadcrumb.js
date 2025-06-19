@@ -1,17 +1,17 @@
 function hideBreadcrumb() {
-    const breadcrumb = document.getElementById('breadcrumb');
+    const breadcrumb = document.getElementById("breadcrumb");
     if (breadcrumb) {
-        breadcrumb.classList.add('hidden');
+        breadcrumb.classList.add("hidden");
     }
 }
 
 function showBreadcrumb(content) {
-    const breadcrumb = document.getElementById('breadcrumb');
-    const breadcrumbContent = document.getElementById('breadcrumb-content');
+    const breadcrumb = document.getElementById("breadcrumb");
+    const breadcrumbContent = document.getElementById("breadcrumb-content");
     
     if (breadcrumb && breadcrumbContent) {
         breadcrumbContent.innerHTML = content;
-        breadcrumb.classList.remove('hidden');
+        breadcrumb.classList.remove("hidden");
     }
 }
 
@@ -19,7 +19,7 @@ function createBreadcrumbForProductList(category, itemCount) {
     return `<span class="breadcrumb-current">${category} <span class="breadcrumb-separator">→</span> (${itemCount} items)</span>`;
 }
 
-function createBreadcrumbForProductDetail(category, productName = '') {
+function createBreadcrumbForProductDetail(category, productName = "") {
     if (productName) {
         return `
             <a href="/product-list.html?category=${encodeURIComponent(category)}" class="breadcrumb-item">${category}</a>
@@ -41,7 +41,7 @@ function initProductListPage(category, itemCount) {
     showBreadcrumb(breadcrumbContent);
 }
 
-function initProductDetailPage(category, productName = '') {
+function initProductDetailPage(category, productName = "") {
     const breadcrumbContent = createBreadcrumbForProductDetail(category, productName);
     showBreadcrumb(breadcrumbContent);
 }

@@ -1,11 +1,13 @@
 import { loadHeaderFooter } from "./utils.mjs";
 import shoppingCart from "./shoppingCart.mjs";
 import { updateCartIcon } from "./superscript.js";
+import { initLoginButton } from "./loginButton.js";
 
 async function init() {
   await loadHeaderFooter();
   updateCartIcon();
   shoppingCart();
+  initLoginButton();
 }
 
 init();

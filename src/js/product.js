@@ -5,6 +5,7 @@ import { updateCartIcon } from "./superscript.js";
 import { displayDiscount } from "./discountManager.js";
 import { initProductDetailPage } from "./breadcrumb.js";
 import { displayProductRecommendations } from "./productRecommendations.mjs";
+import { initLoginButton } from "./loginButton.js";
 
 const productId = getParam("product");
 
@@ -62,7 +63,7 @@ function getProductCategory() {
 function getBreadcrumbCategory() {
   try {
     // Look for the breadcrumb link that points back to the product list
-    const breadcrumbLink = document.querySelector('.breadcrumb-item');
+    const breadcrumbLink = document.querySelector(".breadcrumb-item");
     if (breadcrumbLink) {
       return breadcrumbLink.textContent.trim();
     }
@@ -83,10 +84,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(async () => {
     await loadRecommendations();
   }, 500);
+  initLoginButton();
 });
 
 // Modified to store the category globally
-export function initProductDetailPageWithRecommendations(category, productName = '') {
+export function initProductDetailPageWithRecommendations(category, productName = "") {
   currentCategory = category; // Store category for recommendations
   initProductDetailPage(category, productName);
 }

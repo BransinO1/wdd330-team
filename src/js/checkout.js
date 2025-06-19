@@ -4,12 +4,15 @@ import { updateCartIcon } from "./superscript.js";
 import cartItemTemplate from "./cartItemTemplate.mjs";
 import checkoutProcess from "./checkoutProcess.mjs";
 import { alertMessage } from "./utils.mjs";
+import { initLoginButton } from "./loginButton.js";
+
 
 // Wait for the DOM to fully load
 document.addEventListener("DOMContentLoaded", () => {
   // Load header/footer and update cart icon
-  loadHeaderFooter().then(() => {
+    loadHeaderFooter().then(() => {
     updateCartIcon();
+    initLoginButton();
   });
 
   // Initialize checkout process with cart key and display target

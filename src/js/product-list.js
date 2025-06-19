@@ -1,32 +1,14 @@
-// import { updateCartIcon } from "./superscript.js";
-// import { loadHeaderFooter, getParam } from "./utils.mjs";
-// import productList from "./productList.mjs";
-
-// document.addEventListener("DOMContentLoaded", async () => {
-//   await loadHeaderFooter();
-//   updateCartIcon();
-
-//   const category = getParam("category") || "tents";
-
-//   const titleElement = document.querySelector(".category-title");
-//   if (titleElement) {
-//     const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
-//     titleElement.textContent = `Top Products: ${capitalizedCategory}`;
-//   }
-
-//   productList(".product-list", category);
-// });
-
 import { updateCartIcon } from "./superscript.js";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import productList from "./productList.mjs";
-import { initProductListPage } from './breadcrumb.js';
-// Import the function directly
+import { initProductListPage } from "./breadcrumb.js";
 import { getProductsByCategory } from "./externalServices.mjs";
+import { initLoginButton } from "./loginButton.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadHeaderFooter();
   updateCartIcon();
+  initLoginButton();
 
   const category = getParam("category") || "tents";
   const sortSelect = document.getElementById("sort-select");
