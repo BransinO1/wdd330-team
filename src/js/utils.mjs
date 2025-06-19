@@ -106,3 +106,7 @@ export function alertMessage(message, scroll = true) {
 
   setTimeout(() => alert.remove(), 5000);
 }
+
+export function removeItem(key) {
+  localStorage.removeItem(key);
+}

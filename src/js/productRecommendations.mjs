@@ -1,4 +1,4 @@
-import { getProductsByCategory } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 
 export async function displayProductRecommendations(currentProductId, category) {
   try {
