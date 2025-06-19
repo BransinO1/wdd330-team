@@ -53,3 +53,7 @@ export default {
   checkout,
   searchProducts
 };
+
+export {
+  getProductsByCategory
+}
